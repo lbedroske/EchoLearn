@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, timedelta
 
@@ -8,8 +8,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-# -------------------- Models --------------------
-
+# -------------------- Model --------------------
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
@@ -20,7 +19,6 @@ class Topic(db.Model):
         return f'<Topic {self.title}>'
 
 # -------------------- Routes --------------------
-
 @app.route('/')
 def dashboard():
     return render_template('dashboard.html')
@@ -42,8 +40,7 @@ def enter_missing_topic():
         try:
             title = request.form['title']
             description = request.form.get('description', '')
-            date_added_str = request.form['date_added']
-            date_added = date.fromisoformat(date_added_str)  # Cleaner than strptime
+            date_added = date.fromisoformat(request.form['date_added'])
             new_topic = Topic(title=title, description=description, date_added=date_added)
             db.session.add(new_topic)
             db.session.commit()
@@ -52,5 +49,12 @@ def enter_missing_topic():
             return f"Error adding topic: {e}", 500
     return render_template('enter_missing_topic.html')
 
-# Main review page — accessible from both URLs
-@app.route('/review-top
+# Fixed route – both URLs work
+@app.route('/review-topics')
+@app.route('/review-scheduled-topics')
+def review_topics():
+    today = date.today()
+
+    recent = Topic.query.filter(Topic.date_added == today - timedelta(days=3)).order_by(Topic.title).all()
+    medium = Topic.query.filter(Topic.date_added == today - timedelta(days=14)).order_by(Topic.title).all()
+    long   = Topic.query.filter(Topic
