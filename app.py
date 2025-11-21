@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, timedelta
+from sqlalchemy import and_
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///topics.db'
@@ -39,11 +40,8 @@ def enter_missing_topic():
             title = request.form['title']
             description = request.form.get('description')
             date_added_str = request.form['date_added']
-            
-            # Parse the date string
             from datetime import datetime
             date_added = datetime.strptime(date_added_str, '%Y-%m-%d').date()
-            
             new_topic = Topic(title=title, description=description, date_added=date_added)
             db.session.add(new_topic)
             db.session.commit()
@@ -60,10 +58,26 @@ def review_topics():
     medium_date = today - timedelta(days=14)
     long_date = today - timedelta(days=35)
 
-    # Query for topics that match these specific review dates
-    recent = Topic.query.filter(Topic.date_added == recent_date).all()
-    medium = Topic.query.filter(Topic.date_added == medium_date).all()
-    long = Topic.query.filter(Topic.date_added == long_date).all()
+    recent = Topic.query.filter(
+        and_(
+            Topic.date_added >= recent_date,
+            Topic.date_added < recent_date + timedelta(days=1)
+        )
+    ).all()
+
+    medium = Topic.query.filter(
+        and_(
+            Topic.date_added >= medium_date,
+            Topic.date_added < medium_date + timedelta(days=1)
+        )
+    ).all()
+
+    long = Topic.query.filter(
+        and_(
+            Topic.date_added >= long_date,
+            Topic.date_added < long_date + timedelta(days=1)
+        )
+    ).all()
 
     return render_template('review_topics.html', recent=recent, medium=medium, long=long)
 
