@@ -51,9 +51,10 @@ def review_topics():
     medium_date = today - timedelta(days=14)
     long_date = today - timedelta(days=35)
 
-    recent = Topic.query.filter_by(date_added=recent_date).all()
-    medium = Topic.query.filter_by(date_added=medium_date).all()
-    long = Topic.query.filter_by(date_added=long_date).all()
+    # Query for topics that match these specific review dates
+    recent = Topic.query.filter(Topic.date_added == recent_date).all()
+    medium = Topic.query.filter(Topic.date_added == medium_date).all()
+    long = Topic.query.filter(Topic.date_added == long_date).all()
 
     return render_template('review_topics.html', recent=recent, medium=medium, long=long)
 
