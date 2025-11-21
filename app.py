@@ -35,13 +35,22 @@ def enter_topic():
 @app.route('/enter-missing-topic', methods=['GET', 'POST'])
 def enter_missing_topic():
     if request.method == 'POST':
-        title = request.form['title']
-        description = request.form.get('description')
-        date_added = request.form['date_added']
-        new_topic = Topic(title=title, description=description, date_added=date.fromisoformat(date_added))
-        db.session.add(new_topic)
-        db.session.commit()
-        return redirect('/')
+        try:
+            title = request.form['title']
+            description = request.form.get('description')
+            date_added_str = request.form['date_added']
+            
+            # Parse the date string
+            from datetime import datetime
+            date_added = datetime.strptime(date_added_str, '%Y-%m-%d').date()
+            
+            new_topic = Topic(title=title, description=description, date_added=date_added)
+            db.session.add(new_topic)
+            db.session.commit()
+            return redirect('/')
+        except Exception as e:
+            print(f"Error adding missing topic: {e}")
+            return f"Error: {e}", 500
     return render_template('enter_missing_topic.html')
 
 @app.route('/review-topics')
