@@ -18,10 +18,17 @@ class Topic(db.Model):
     def __repr__(self):
         return f'<Topic {self.title}>'
 
+# Auto-create tables on startup (safe even if they exist)
+with app.app_context():
+    db.create_all()
+
 # -------------------- Routes --------------------
 @app.route('/')
 def dashboard():
-    return render_template('dashboard.html')
+    try:
+        return render_template('dashboard.html')
+    except Exception as e:
+        return f"Dashboard template missing or error: {str(e)}", 500
 
 @app.route('/enter-topic', methods=['GET', 'POST'])
 def enter_topic():
@@ -32,7 +39,10 @@ def enter_topic():
         db.session.add(new_topic)
         db.session.commit()
         return redirect('/')
-    return render_template('enter_topic.html')
+    try:
+        return render_template('enter_topic.html')
+    except Exception as e:
+        return f"Enter topic template missing or error: {str(e)}", 500
 
 @app.route('/enter-missing-topic', methods=['GET', 'POST'])
 def enter_missing_topic():
@@ -47,39 +57,39 @@ def enter_missing_topic():
             return redirect('/')
         except Exception as e:
             return f"Error adding topic: {e}", 500
-    return render_template('enter_missing_topic.html')
+    try:
+        return render_template('enter_missing_topic.html')
+    except Exception as e:
+        return f"Enter missing topic template missing or error: {str(e)}", 500
 
-# Both URLs now work perfectly
+# Both URLs now work perfectly — with error debugging
 @app.route('/review-topics')
 @app.route('/review-scheduled-topics')
 def review_topics():
-    today = date.today()
+    try:
+        today = date.today()
 
-    recent = Topic.query.filter(
-        Topic.date_added == today - timedelta(days=3)
-    ).order_by(Topic.title).all()
+        recent = Topic.query.filter(
+            Topic.date_added == today - timedelta(days=3)
+        ).order_by(Topic.title).all()
 
-    medium = Topic.query.filter(
-        Topic.date_added == today - timedelta(days=14)
-    ).order_by(Topic.title).all()
+        medium = Topic.query.filter(
+            Topic.date_added == today - timedelta(days=14)
+        ).order_by(Topic.title).all()
 
-    long = Topic.query.filter(
-        Topic.date_added == today - timedelta(days=35)
-    ).order_by(Topic.title).all()
+        long = Topic.query.filter(
+            Topic.date_added == today - timedelta(days=35)
+        ).order_by(Topic.title).all()
 
-    return render_template(
-        'review_topics.html',
-        recent=recent,
-        medium=medium,
-        long=long,
-        today=today
-    )
-
-# Create tables if they don't exist
-@app.route('/init-db')
-def init_db():
-    db.create_all()
-    return "Database tables created successfully!"
+        return render_template(
+            'review_topics.html',
+            recent=recent,
+            medium=medium,
+            long=long,
+            today=today
+        )
+    except Exception as e:
+        return f"Review topics error (this will show in browser): {str(e)}<br><pre>{str(e.__class__)}: {str(e)}</pre>", 500
 
 # -------------------- Run --------------------
 if __name__ == '__main__':
