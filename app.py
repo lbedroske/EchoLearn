@@ -49,12 +49,38 @@ def enter_missing_topic():
             return f"Error adding topic: {e}", 500
     return render_template('enter_missing_topic.html')
 
-# Fixed route – both URLs work
+# Both URLs now work perfectly
 @app.route('/review-topics')
 @app.route('/review-scheduled-topics')
 def review_topics():
     today = date.today()
 
-    recent = Topic.query.filter(Topic.date_added == today - timedelta(days=3)).order_by(Topic.title).all()
-    medium = Topic.query.filter(Topic.date_added == today - timedelta(days=14)).order_by(Topic.title).all()
-    long   = Topic.query.filter(Topic
+    recent = Topic.query.filter(
+        Topic.date_added == today - timedelta(days=3)
+    ).order_by(Topic.title).all()
+
+    medium = Topic.query.filter(
+        Topic.date_added == today - timedelta(days=14)
+    ).order_by(Topic.title).all()
+
+    long = Topic.query.filter(
+        Topic.date_added == today - timedelta(days=35)
+    ).order_by(Topic.title).all()
+
+    return render_template(
+        'review_topics.html',
+        recent=recent,
+        medium=medium,
+        long=long,
+        today=today
+    )
+
+# Create tables if they don't exist
+@app.route('/init-db')
+def init_db():
+    db.create_all()
+    return "Database tables created successfully!"
+
+# -------------------- Run --------------------
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
