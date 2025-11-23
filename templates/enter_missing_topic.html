@@ -3,36 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Missing Topic</title>
+    <title>Add Missing Topic • EchoLearn</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Add a Missing Topic</h1>
-
+    <h1>Add Missing Topic</h1>
     <form method="POST">
-        <label for="title">Topic Title:</label>
-        <input type="text" id="title" name="title" required>
+        <label for="title">Topic Title</label><br>
+        <input type="text" name="title" id="title" required placeholder="e.g., CSS Grid Layout"><br><br>
 
-        <label for="description">Description (optional):</label>
-        <textarea id="description" name="description"></textarea>
+        <label for="description">Description (optional)</label><br>
+        <textarea name="description" id="description" rows="4" placeholder="Quick note..."></textarea><br><br>
 
-        <label for="date_added">Date of Topic:</label>
-        <input type="date" id="date_added" name="date_added" required>
+        <label for="date_added">Date Added</label><br>
+        <input type="date" name="date_added" id="date_added" required><br><br>
 
-        <button type="submit">Save Missing Topic</button>
+        <button type="submit">Add Topic</button>
     </form>
 
-    <div class="menu-stack small-menu">
-        <a class="menu-option new-topic" href="/enter-topic">
-            📝 <strong>Enter New Topic</strong><br>
-            <span>Log today’s concept for spaced review.</span>
-        </a>
-        <a class="menu-option review-topics" href="/review-topics">
-            📅 <strong>Review Scheduled Topics</strong><br>
-            <span>See what’s due for review today.</span>
-        </a>
-    </div>
-
-    <a class="floating-back" href="/">← Back to Dashboard</a>
+    <a class="floating-back" href="/">Back to Dashboard</a>
 </body>
 </html>
