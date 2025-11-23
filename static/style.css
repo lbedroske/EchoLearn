@@ -108,3 +108,24 @@ button:hover {
 
 .menu-option:hover {
     transform: translateY(-2
+
+/* ——— FIX: Restore colored boxes + perfect spacing for "Back to Dashboard" ——— */
+.new-topic     { background-color: #e0f7fa !important; color: #00695c !important; }
+.review-topics { background-color: #fff3e0 !important; color: #e65100 !important; }
+.missing-topic { background-color: #fce4ec !important; color: #880e4f !important; }
+
+.floating-back {
+    display: block;
+    margin: 120px auto 80px auto;   /* ← this gives you the perfect breathing room */
+    text-align: center;
+    padding: 18px 40px;
+    background-color: var(--primary);
+    color: white;
+    width: fit-content;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 19px;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    transition: all 0.25s ease;
+}
