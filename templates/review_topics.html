@@ -9,7 +9,6 @@
 <body>
     <h1>Review Scheduled Topics</h1>
 
-    <!-- SHORT-TERM (uses your original green "recent" style) -->
     <h2 class="recent">Short-Term Review</h2>
     {% if short_term %}
         <ul>
@@ -21,7 +20,6 @@
         <p>No topics for short-term review today. Enjoy the break!</p>
     {% endif %}
 
-    <!-- MEDIUM-TERM (uses your original orange "medium" style) -->
     <h2 class="medium">Medium-Term Review</h2>
     {% if medium_term %}
         <ul>
@@ -33,7 +31,6 @@
         <p>No topics for medium-term review today.</p>
     {% endif %}
 
-    <!-- LONG-TERM (uses your original red "long" style) -->
     <h2 class="long">Long-Term Review</h2>
     {% if long_term %}
         <ul>
