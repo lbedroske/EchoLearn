@@ -72,12 +72,5 @@ def review_topics():
         today=today
     )
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-@app.route('/admin/topics')
-def admin_topics():
-    topics = Topic.query.all()
-    if not topics:
-        return "No topics found."
-    return "<br>".join([f"{t.id}: {t.title} — {t.date_added}" for t in topics])
+
 
