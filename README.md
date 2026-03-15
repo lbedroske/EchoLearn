@@ -1,33 +1,48 @@
-# EchoLearn – Spaced Repetition Learning Tool
+# EchoLearn: Spaced-Repetition Scheduler for Educators
 
-**Live Demo:** https://echolearn-2voe.onrender.com  
-**GitHub Profile:** https://github.com/lbedroske
+**Live Demo**: [https://echolearn-2voe.onrender.com](https://echolearn-2voe.onrender.com)
 
 ## Overview
-EchoLearn is a full-stack web prototype I designed to help teachers automate spaced-repetition review scheduling. Inspired by my classroom teaching experience and the Ebbinghaus Forgetting Curve, it generates personalized intervals (2, 4, 14, 35 days) with weekend adjustments, allowing flexible, data-driven review plans.
+EchoLearn is a web-based prototype tool that automates personalized review scheduling for students using the **Ebbinghaus Forgetting Curve**. As a former high school math teacher, I built this to solve real classroom retention challenges—helping educators input topics and get automatic, weekend-aware review dates (e.g., 2, 4, 14, 35 days intervals with adjustments).
 
-Built as a school pilot tool to tackle real retention issues—simple entry for topics, automatic scheduling, and persistent tracking.
+This project bridges education, data-driven algorithms, and full-stack development—perfect for demonstrating applied data science principles like algorithmic scheduling and persistent data tracking.
 
 ## Key Features
-- Topic entry and review date calculation
-- Weekend-aware interval logic
-- User-friendly interface for educators
-- SQLite persistence for review history
+- **Topic & schedule entry** for quick setup
+- **Personalized intervals** based on Ebbinghaus curve
+- **Weekend-aware logic** (skips non-school days)
+- **Persistent tracking** via SQLite (review history per topic/student)
+- **Simple educator dashboard** for viewing upcoming reviews
 
 ## Tech Stack
-- Python (core algorithm and scripting)
-- Flask (web framework)
-- SQLAlchemy ORM (SQLite database)
-- HTML/CSS (frontend styling)
-- Render (hosting and deployment)
+- **Backend**: Python, Flask, SQLAlchemy (ORM), SQLite
+- **Frontend**: HTML/CSS (Jinja templates)
+- **Deployment**: Render (free tier, auto-build from GitHub)
 
-## Development Approach
-The concept, requirements, interval algorithm, testing, and deployment were driven by my educational background. I used generative AI tools for rapid code prototyping and boilerplate generation, then personally reviewed, customized, integrated, and refined all logic to ensure pedagogical fit and functionality.
+## Screenshots
+(Add these after uploading 2–3 images to the repo—see below)
 
-## Setup (Local Run)
+![Dashboard View](images/dashboard.png)  
+*Main dashboard showing upcoming reviews*
+
+![Topic Entry](images/topic-entry.png)  
+*Simple form for adding topics and initial review*
+
+![Schedule Output](images/schedule.png)  
+*Personalized review calendar with intervals*
+
+## What I Learned / DS Relevance
+- Implemented custom scheduling logic (math + date handling) to model forgetting curves—ties directly to operations research/optimization interests.
+- Handled persistent data with SQLAlchemy (joins/queries for review history).
+- Full end-to-end deployment (Git → Render), including Procfile for production.
+- Focused on user-centric design (teacher pain points) → strong data storytelling/communication angle from my teaching background.
+
+## Setup (Local)
 1. Clone: `git clone https://github.com/lbedroske/EchoLearn.git`
 2. Install: `pip install -r requirements.txt`
-3. Run: `python app.py`  
-   Visit http://localhost:5000
+3. Run: `python app.py`
+4. Visit: http://localhost:5000
 
-Open to feedback or small improvements—this is an ongoing pilot!
+Open to feedback/collaboration—especially for expanding to analytics dashboards (e.g., retention metrics over time).
+
+Built by Lucas Bedroske | Aspiring Data Scientist | [LinkedIn](http://www.linkedin.com/in/lucas-bedroske-2a792432b) | [@LBedroske on X]
