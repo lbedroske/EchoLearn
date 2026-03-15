@@ -26,16 +26,22 @@ This project bridges education, data-driven algorithms, and full-stack developme
 
 ![Dashboard - Welcome Page](dashboard.png)
 
+---
+
 **Enter New Topic Form**  
 *Form for adding a topic and setting initial review date*  
 
 ![Enter New Topic Form](enter-topic-form.png)
 
+---
+
 **Sample Review Schedule**  
 *Example of personalized spaced-repetition schedule output*  
 
 ![Sample Review Schedule](review-schedule.png)
+
 ---
+
 ## What I Learned / DS Relevance
 - Implemented custom scheduling logic (math + date handling) to model forgetting curves—ties directly to operations research/optimization interests.
 - Handled persistent data with SQLAlchemy (joins/queries for review history).
