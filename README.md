@@ -26,10 +26,14 @@ This project bridges education, data-driven algorithms, and full-stack developme
 
 ![Dashboard - Welcome Page](dashboard.png)
 
+---
+
 **Enter New Topic Form**  
 *Form for adding a topic and setting initial review date*  
 
 ![Enter New Topic Form](enter-topic-form.png)
+
+---
 
 **Sample Review Schedule**  
 *Example of personalized spaced-repetition schedule output*  
