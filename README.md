@@ -21,13 +21,13 @@ This project bridges education, data-driven algorithms, and full-stack developme
 
 ## Screenshots
 
-![Dashboard - Welcome Page] dashboard.png
+![Dashboard - Welcome Page](dashboard.png)
 *Main dashboard with navigation to enter/review topics*
 
-![Enter New Topic Form] enter-topic-form.png
+![Enter New Topic Form](enter-topic-form.png)
 *Form for adding a topic and setting initial review date*
 
-![Sample Review Schedule] review-schedule.png
+![Sample Review Schedule](review-schedule.png)
 *Example of personalized spaced-repetition schedule output*
 
 ## What I Learned / DS Relevance
