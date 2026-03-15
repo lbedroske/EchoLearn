@@ -47,6 +47,7 @@ This project bridges education, data-driven algorithms, and full-stack developme
 - Handled persistent data with SQLAlchemy (joins/queries for review history).
 - Full end-to-end deployment (Git → Render), including Procfile for production.
 - Focused on user-centric design (teacher pain points) → strong data storytelling/communication angle from my teaching background.
+- Applied date-based algorithms and persistence—skills transferable to optimization problems in retail/supply chain (e.g., inventory scheduling).
 
 ## Setup (Local)
 1. Clone: `git clone https://github.com/lbedroske/EchoLearn.git`
