@@ -20,18 +20,17 @@ This project bridges education, data-driven algorithms, and full-stack developme
 - **Deployment**: Render (free tier, auto-build from GitHub)
 
 ## Screenshots
-
+*Main dashboard with navigation to enter/review topics*
 ![Dashboard - Welcome Page](dashboard.png)
 
-*Main dashboard with navigation to enter/review topics*
-
-![Enter New Topic Form](enter-topic-form.png)
 
 *Form for adding a topic and setting initial review date*
+![Enter New Topic Form](enter-topic-form.png)
 
-![Sample Review Schedule](review-schedule.png)
 
 *Example of personalized spaced-repetition schedule output*
+![Sample Review Schedule](review-schedule.png)
+
 
 ## What I Learned / DS Relevance
 - Implemented custom scheduling logic (math + date handling) to model forgetting curves—ties directly to operations research/optimization interests.
