@@ -20,16 +20,21 @@ This project bridges education, data-driven algorithms, and full-stack developme
 - **Deployment**: Render (free tier, auto-build from GitHub)
 
 ## Screenshots
-*Main dashboard with navigation to enter/review topics*
-![Dashboard - Welcome Page](dashboard.png)
 
+<p align="center">
+  <img src="dashboard.png" alt="Dashboard - Welcome Page" width="80%" />
+  <br><em>Main dashboard with navigation to enter/review topics</em>
+</p>
 
-*Form for adding a topic and setting initial review date*
-![Enter New Topic Form](enter-topic-form.png)
+<p align="center">
+  <img src="enter-topic-form.png" alt="Enter New Topic Form" width="80%" />
+  <br><em>Form for adding a topic and setting initial review date</em>
+</p>
 
-
-*Example of personalized spaced-repetition schedule output*
-![Sample Review Schedule](review-schedule.png)
+<p align="center">
+  <img src="review-schedule.png" alt="Sample Review Schedule" width="80%" />
+  <br><em>Example of personalized spaced-repetition schedule output</em>
+</p>
 
 
 ## What I Learned / DS Relevance
